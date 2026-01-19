@@ -19,8 +19,8 @@ export default function App() {
       area: "Baramulla",
       mentalHealth: "No public statements found",
       womenIssues: "Raised issue of women employment",
-      x: 140,
-      y: 120,
+      x: 210,
+      y: 170,
     },
   ];
 
