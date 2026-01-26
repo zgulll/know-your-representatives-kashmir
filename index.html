@@ -116,7 +116,7 @@
     */
 
     // Load full region outline (Jammu + Kashmir + Ladakh)
-    fetch('jk_outline.geojson')
+    fetch('data/jk_outline.geojson')
       .then(res => res.json())
       .then(data => {
         L.geoJSON(data, {
@@ -125,7 +125,7 @@
       });
 
     // Load Kashmir districts only (clickable)
-    fetch('kashmir_districts.geojson')
+    fetch('data/kashmir_districts.geojson')
       .then(res => res.json())
       .then(data => {
         L.geoJSON(data, {
