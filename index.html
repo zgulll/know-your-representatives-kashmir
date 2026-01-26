@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Know Your Politician – Kashmir</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,9 +23,9 @@
 
     .card {
       background: white;
-      padding: 30px;
+      padding: 20px;
       border-radius: 12px;
-      width: 420px;
+      width: 500px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
@@ -31,15 +38,16 @@
       color: #555;
     }
 
-    img {
-      width: 300px;
-      margin-top: 20px;
+    #map {
+      height: 350px;
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
       border: 1px solid #ccc;
-      border-radius: 8px;
     }
 
     .note {
-      margin-top: 15px;
+      margin-top: 12px;
       font-size: 14px;
       color: #888;
     }
@@ -48,12 +56,83 @@
 <body>
   <div class="card">
     <h1>Know Your Politician – Kashmir</h1>
-    <p>Click on a district to learn about your representative.</p>
+    <p>Click on a Kashmir district to learn about your representative.</p>
 
-    <img src="kashmir.svg" alt="Kashmir Map" />
+    <div id="map"></div>
 
-    <div class="note">🚧 Under construction — data coming soon</div>
+    <div class="note">🚧 Under construction — representative data coming soon</div>
   </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    // Initialize map centered on Jammu & Kashmir
+    const map = L.map('map').setView([34.2, 74.8], 7);
+
+    // Base map
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Style for full region outline (Jammu + Kashmir + Ladakh)
+    function outlineStyle() {
+      return {
+        color: '#444',
+        weight: 2,
+        fillColor: '#e0e0e0',
+        fillOpacity: 0.3
+      };
+    }
+
+    // Style for Kashmir districts only
+    function districtStyle() {
+      return {
+        color: '#2c3e50',
+        weight: 1.5,
+        fillColor: '#74b9ff',
+        fillOpacity: 0.5
+      };
+    }
+
+    // When a Kashmir district is clicked
+    function onEachDistrict(feature, layer) {
+      const name = feature.properties.district || feature.properties.NAME_2 || 'Unknown District';
+
+      layer.on('click', function () {
+        alert('District: ' + name + '\nRepresentative data coming soon!');
+      });
+
+      layer.bindTooltip(name, { sticky: true });
+    }
+
+    /*
+      IMPORTANT FILES YOU MUST ADD:
+
+      1. jk_outline.geojson   -> Outline of Jammu + Kashmir + Ladakh
+      2. kashmir_districts.geojson -> ONLY districts of Kashmir Valley
+
+      Put both files in the SAME folder as index.html
+    */
+
+    // Load full region outline (Jammu + Kashmir + Ladakh)
+    fetch('jk_outline.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: outlineStyle
+        }).addTo(map);
+      });
+
+    // Load Kashmir districts only (clickable)
+    fetch('kashmir_districts.geojson')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: districtStyle,
+          onEachFeature: onEachDistrict
+        }).addTo(map);
+      });
+  </script>
 </body>
 </html>
-
