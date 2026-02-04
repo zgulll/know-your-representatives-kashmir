@@ -1,8 +1,9 @@
-<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
   <path
-    d="M120 80 L380 90 L420 200 L390 340 L260 400 L120 360 L80 260 Z"
-    fill="#e5e7eb"
-    stroke="#555"
+    d="M120 200 L200 120 L350 100 L520 140 L650 220 L700 320 L670 420
+       L600 520 L480 600 L360 620 L260 580 L180 520 L120 440 Z"
+    fill="none"
+    stroke="black"
     stroke-width="2"
   />
 </svg>
