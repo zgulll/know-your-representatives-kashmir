@@ -1,27 +1,74 @@
+import React from "react";
+
 function App() {
+
+  const handleClick = (district) => {
+    alert("You clicked " + district);
+  };
+
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
       <h1>Know Your Politician – Kashmir</h1>
+      <p>Click a district</p>
 
-      <svg width="500" height="500" style={{ border: "1px solid black" }}>
+      <svg viewBox="0 0 500 500" width="400">
 
-        {/* MAP OUTLINE */}
-        <polygon
-          points="50,150 200,50 350,80 450,150 480,250 450,350 350,450 200,420 100,300"
-          fill="#eee"
-          stroke="black"
+        {/* OUTLINE */}
+        <rect x="50" y="50" width="300" height="300" fill="none" stroke="black" />
+
+        {/* SRINAGAR */}
+        <rect x="150" y="150" width="60" height="40"
+          fill="#8ecae6"
+          onClick={() => handleClick("Srinagar")}
         />
 
-        {/* DISTRICTS (BIG + GUARANTEED VISIBLE) */}
-        <rect x="200" y="150" width="80" height="80" fill="blue" onClick={() => alert("Srinagar")} />
-        <rect x="150" y="200" width="80" height="80" fill="green" onClick={() => alert("Budgam")} />
-        <rect x="100" y="150" width="80" height="80" fill="red" onClick={() => alert("Baramulla")} />
-        <rect x="80" y="100" width="80" height="80" fill="purple" onClick={() => alert("Kupwara")} />
-        <rect x="220" y="100" width="80" height="80" fill="orange" onClick={() => alert("Bandipora")} />
-        <rect x="260" y="140" width="80" height="80" fill="pink" onClick={() => alert("Ganderbal")} />
-        <rect x="260" y="230" width="80" height="80" fill="cyan" onClick={() => alert("Pulwama")} />
-        <rect x="200" y="260" width="80" height="80" fill="yellow" onClick={() => alert("Shopian")} />
-        <rect x="260" y="320" width="80" height="80" fill="brown" onClick={() => alert("Anantnag")} />
+        {/* BUDGAM */}
+        <rect x="100" y="150" width="50" height="40"
+          fill="#219ebc"
+          onClick={() => handleClick("Budgam")}
+        />
+
+        {/* BARAMULLA */}
+        <rect x="80" y="100" width="80" height="40"
+          fill="#023047"
+          onClick={() => handleClick("Baramulla")}
+        />
+
+        {/* ANANTNAG */}
+        <rect x="150" y="220" width="70" height="50"
+          fill="#ffb703"
+          onClick={() => handleClick("Anantnag")}
+        />
+
+        {/* PULWAMA */}
+        <rect x="120" y="210" width="40" height="40"
+          fill="#fb8500"
+          onClick={() => handleClick("Pulwama")}
+        />
+
+        {/* SHOPIAN */}
+        <rect x="90" y="220" width="40" height="40"
+          fill="#d00000"
+          onClick={() => handleClick("Shopian")}
+        />
+
+        {/* GANDERBAL */}
+        <rect x="170" y="120" width="50" height="30"
+          fill="#90dbf4"
+          onClick={() => handleClick("Ganderbal")}
+        />
+
+        {/* BANDIPORA */}
+        <rect x="200" y="90" width="60" height="30"
+          fill="#48cae4"
+          onClick={() => handleClick("Bandipora")}
+        />
+
+        {/* KUPWARA */}
+        <rect x="40" y="80" width="60" height="50"
+          fill="#0077b6"
+          onClick={() => handleClick("Kupwara")}
+        />
 
       </svg>
     </div>
