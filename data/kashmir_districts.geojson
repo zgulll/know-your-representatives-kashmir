@@ -1,4 +1,29 @@
 {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "district": "Srinagar" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.75,34.05],[74.85,34.05],[74.90,34.15],[74.80,34.18],[74.75,34.05]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "district": "Anantnag" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[75.10,33.65],[75.30,33.65],[75.35,33.80],[75.15,33.85],[75.10,33.65]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "district": "Baramulla" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[74.25,34.15],[74.40,34.10],[74.50,34.25],[74.35,34.35],[74.25,34.15]]]
+      }
+    }
+  ]
 }
