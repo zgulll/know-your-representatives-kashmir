@@ -5,8 +5,8 @@ function App() {
 
   useEffect(() => {
     fetch("/data/kashmir_districts.geojson")
-      .then(res => res.json())
-      .then(data => setDistricts(data.features));
+      .then((res) => res.json())
+      .then((data) => setDistricts(data.features));
   }, []);
 
   return (
@@ -28,14 +28,13 @@ function App() {
           <polygon
             key={i}
             points={d.geometry.coordinates[0]
-              .map(p => p.join(","))
+              .map((c) => `${c[0] * 8},${800 - c[1] * 8}`)
               .join(" ")}
-            fill="rgba(0, 128, 0, 0.5)"
+            fill="lightblue"
             stroke="black"
             onClick={() => alert(d.properties.district)}
           />
         ))}
-
       </svg>
     </div>
   );
