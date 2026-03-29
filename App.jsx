@@ -7,7 +7,7 @@ function App() {
       <p>Click map (districts coming next)</p>
 
       <img 
-        src="/kashmir.svg" 
+        src="./kashmir.svg" 
         alt="Kashmir Map" 
         style={{ width: "400px", cursor: "pointer" }}
         onClick={() => alert("Map clicked")}
