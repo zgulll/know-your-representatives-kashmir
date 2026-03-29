@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [districts, setDistricts] = useState([]);
-
-  useEffect(() => {
-    fetch("/data/kashmir_districts.geojson")
-      .then((res) => res.json())
-      .then((data) => setDistricts(data.features));
-  }, []);
+  const districts = [
+    { name: "Srinagar", points: "300,300 340,300 340,340 300,340" },
+    { name: "Anantnag", points: "320,360 360,360 360,400 320,400" },
+    { name: "Baramulla", points: "260,260 300,260 300,300 260,300" },
+    { name: "Kupwara", points: "240,220 280,220 280,260 240,260" },
+    { name: "Pulwama", points: "340,340 380,340 380,380 340,380" }
+  ];
 
   return (
     <div style={{ textAlign: "center", marginTop: "20px" }}>
@@ -15,11 +15,10 @@ function App() {
 
       <svg viewBox="0 0 800 800" width="500">
 
-        {/* OUTLINE */}
+        {/* FULL REGION OUTLINE (J&K + LADAKH SHAPE STYLE) */}
         <path
-          d="M120 200 L200 120 L350 100 L520 140 L650 220 L700 320 L670 420
-             L600 520 L480 600 L360 620 L260 580 L180 520 L120 440 Z"
-          fill="none"
+          d="M150 200 L300 120 L500 140 L650 200 L720 300 L700 450 L600 550 L450 650 L300 620 L200 500 L150 350 Z"
+          fill="#f5f5f5"
           stroke="black"
         />
 
@@ -27,12 +26,10 @@ function App() {
         {districts.map((d, i) => (
           <polygon
             key={i}
-            points={d.geometry.coordinates[0]
-              .map((c) => `${c[0] * 8},${800 - c[1] * 8}`)
-              .join(" ")}
+            points={d.points}
             fill="lightblue"
             stroke="black"
-            onClick={() => alert(d.properties.district)}
+            onClick={() => alert(d.name)}
           />
         ))}
       </svg>
@@ -41,5 +38,3 @@ function App() {
 }
 
 export default App;
-
-
